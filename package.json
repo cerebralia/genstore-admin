@@ -4,12 +4,12 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "http-server",
+    "start": "cd ./dist && angular-http-server",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "preinstall": "npm install -g angular-cli",
+    "preinstall": "npm install -g angular-http-server",
     "postinstall": "ng build && mv dist/* ."
   },
   "private": true,
