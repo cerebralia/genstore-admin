@@ -1,0 +1,62 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import {
+  LanguagesComponent, NewLanguageModalComponent
+} from './components/languages/languages.component';
+import { TextComponent } from './components/text/text.component';
+import { TranslationComponent } from './components/translation/translation.component';
+import { LanguageService } from './services/language.service';
+import { TextService } from './services/text.service';
+import { TranslationService } from './services/translation.service';
+
+const routes: Routes = [{
+  path: 'languages',
+  component: LanguagesComponent,
+  data: {
+    title: 'Manage languages',
+    urls: [{ title: 'Languages', url: '/i18n/languages' }, { title: 'Listing' }]
+  }
+}, {
+  path: 'text',
+  component: TextComponent,
+  data: {
+    title: 'Manage text',
+    urls: [{ title: 'Text', url: '/i18n/text' }, { title: 'Listing' }]
+  }
+}, {
+  path: 'translations/:lang',
+  component: TranslationComponent,
+  data: {
+    title: 'Manage translations',
+    urls: [{ title: 'Translations' }, { title: 'Listing' }]
+  }
+}];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(routes),
+    NgbModule,
+  ],
+  declarations: [
+    LanguagesComponent,
+    NewLanguageModalComponent,
+    TextComponent,
+    TranslationComponent
+  ],
+  providers: [
+    LanguageService,
+    TextService,
+    TranslationService
+  ],
+  exports: [],
+  entryComponents: [
+    NewLanguageModalComponent
+  ]
+})
+export class I18nModule { }
